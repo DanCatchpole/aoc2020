@@ -19,6 +19,7 @@ class Day1 : Day {
         let input = data.components(separatedBy: .newlines).filter{ $0 != "" }
         // map them to integers
         self.input = input.map{ Int($0)! }
+        self.input.sort()
     }
     
     override func partA() -> String {
