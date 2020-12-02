@@ -23,9 +23,11 @@ class Day1 : Day {
     }
     
     override func partA() -> String {
-        for i in 0..<self.input.count {
-            let curr = self.input[i]
-            if self.input[i...].contains(2020 - curr) {
+        // can remove anything bigger than the gap if we have to use the smallest item
+        let filtered = self.input.filter {$0 < 2020 - self.input[0]}
+        for i in 0..<filtered.count {
+            let curr = filtered[i]
+            if filtered[(i+1)...].contains(2020 - curr) {
                 return String(curr * (2020 - curr))
             }
         }
@@ -33,14 +35,16 @@ class Day1 : Day {
     }
 
     override func partB() -> String {
-        for i in 0..<self.input.count {
-            let curr1 = self.input[i]
-            for j in i+1..<self.input.count {
-                let curr2 = self.input[j]
-                let sumSoFar = curr1 + curr2
+        // can remove anything bigger than the gap if we use the smallest two items
+        let filtered = self.input.filter {$0 < 2020 - self.input[0] - self.input[1]}
+        for i in 0..<filtered.count {
+            let curr1 = filtered[i]
+            for j in i+1..<filtered.count {
+                let curr2 = filtered[j]
+                let lookingFor = 2020 - curr1 - curr2
                 
-                if self.input[(j+1)...].contains(2020 - sumSoFar) {
-                    return String(curr1 * curr2 * (2020 - sumSoFar))
+                if filtered[(j+1)...].contains(lookingFor) {
+                    return String(curr1 * curr2 * (lookingFor))
                 }
             }
         }
