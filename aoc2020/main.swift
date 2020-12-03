@@ -34,7 +34,7 @@ extension String {
 }
 
 let startPreprocessing = DispatchTime.now().uptimeNanoseconds
-var currentDay : Day = Day2()
+var currentDay : Day = Day3()
 let startA = DispatchTime.now().uptimeNanoseconds
 let ansA = currentDay.partA();
 let startB = DispatchTime.now().uptimeNanoseconds

@@ -45,12 +45,10 @@ class Day2 : Day {
     }
     
     override func partA() -> String {
-        let validPasses = self.input.filter { ruleMatch(rule: $0, str: $1) }
-        return String(validPasses.count)
+        return String(self.input.filter { ruleMatch(rule: $0, str: $1) }.count)
     }
     
     override func partB() -> String {
-        let validPasses = self.input.filter { ruleMatch2(rule: $0, str: $1) }
-        return String(validPasses.count)
+        return String(self.input.filter { ruleMatch2(rule: $0, str: $1) }.count)
     }
 }
